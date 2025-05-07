@@ -1,0 +1,136 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fafafa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+button {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.login-box {
+    text-align: center;
+    width: 100%;
+}
+
+.login-box h1 {
+    font-family: 'Arial', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.login-box input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    outline: none;
+}
+
+.login-box button {
+    padding: 10px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #0095f6;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-box button:hover {
+    background-color: #007bb5;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.divider span {
+    flex: 1;
+    height: 1px;
+    background-color: #dbdbdb;
+    position: relative;
+}
+
+.divider span::before {
+    content: "OR";
+    position: absolute;
+    background-color: #fff;
+    padding: 0 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #8e8e8e;
+    font-size: 0.9rem;
+}
+
+.login-with-google {
+    background-color: #db4437;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-with-google:hover {
+    background-color: #a3362a;
+}
+
+.login-with-google:hover {
+    background-color: #eaeaea;
+}
+
+.signup-link {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #8e8e8e;
+}
+
+.signup-link a {
+    color: #0095f6;
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}

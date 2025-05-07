@@ -1,0 +1,102 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #ff4b2b, #ff416c);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+}
+
+/* Container do formulário */
+.cadastro-container {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 40px 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(12px);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Título */
+.register-box h1 {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+/* Subtítulo */
+.register-box .subtitle {
+    font-size: 1rem;
+    margin-bottom: 25px;
+    color: #ffeaea;
+}
+
+/* Formulário */
+.register-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Inputs */
+.register-box input {
+    padding: 14px 16px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.register-box input:focus {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.register-box input::placeholder {
+    color: #f0dcdc;
+}
+
+/* Botão */
+.register-box button {
+    padding: 14px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #e63946;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.register-box button:hover {
+    background-color: #ba2d3a;
+}
+
+/* Link para login */
+.login-link {
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: #fbeaea;
+    text-align: center;
+}
+
+.login-link a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
