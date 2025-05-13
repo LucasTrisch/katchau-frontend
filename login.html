@@ -1,27 +1,57 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Katchau</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>Login - Katchau Informática</title>
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
-    <div class="login-container">
-        <div class="login-box">
-            <h1>Katchau</h1>
-            <p class="subtitle">Entre na sua conta para continuar</p>
-            <form action="#" method="POST">
-                <input type="text" name="username" placeholder="Usuário" required>
-                <input type="password" name="password" placeholder="Senha" required>
-                <button type="submit">Entrar</button>
-            </form>
-            <div class="divider">
-                <span>OU</span>
-            </div>
-            <button class="login-with-google">Entrar com Google</button>
-            <p class="signup-link">Não tem uma conta? <a href="#">Cadastre-se</a></p>
+    <!-- Cabeçalho -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Katchau Informática</h1>
         </div>
-    </div>
+    </header>
+
+    <!-- Formulário de Login -->
+    <main class="login-container">
+        <div class="login-box">
+            <h2>Bem-vindo de volta!</h2>
+            <p>Faça login para acessar sua conta.</p>
+            <form action="#" method="POST">
+                <!-- Email -->
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+                
+                <!-- Senha -->
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+                
+                <!-- Manter conectado -->
+                <div class="keep-connected">
+                    <input type="checkbox" id="keep-connected" name="keep-connected">
+                    <label for="keep-connected">Manter conectado</label>
+                </div>
+                
+                <!-- Botão de login -->
+                <button type="submit" class="btn-login">Entrar</button>
+            </form>
+
+            <!-- Login com o Google -->
+            <div class="google-login">
+                <img src="assets/images/google-icon.png" alt="Google Icon">
+                <span>Entrar com o Google</span>
+            </div>
+
+            <!-- Link para cadastro -->
+            <p class="register-link">Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
+        </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <p>&copy; 2023 Katchau Informática. Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>

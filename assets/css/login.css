@@ -1,136 +1,162 @@
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #fafafa;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+/* Reset básico */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4; /* Fundo cinza claro */
+    color: #262626; /* Texto preto */
+    line-height: 1.6;
+}
+
+/* Cabeçalho */
+.header {
+    background-color: #0095f6; /* Azul */
+    color: #fff; /* Branco */
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+/* Container do formulário de login */
 .login-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    max-width: 400px;
-    background-color: #fff;
-    border: 1px solid #dbdbdb;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-button {
-    padding: 12px 20px;
-    border-radius: 8px;
-    border: none;
-    font-size: 1rem;
-    cursor: pointer;
-}
-button {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-button:hover {
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    height: calc(100vh - 80px); /* Altura total menos o cabeçalho */
 }
 
 .login-box {
-    text-align: center;
+    background: #fff; /* Fundo branco */
+    border: 1px solid #dbdbdb; /* Borda cinza clara */
+    border-radius: 12px; /* Bordas arredondadas */
+    padding: 30px 20px;
     width: 100%;
+    max-width: 400px; /* Largura fixa */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    text-align: center;
 }
 
-.login-box h1 {
-    font-family: 'Arial', sans-serif;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #333;
+/* Título e subtítulo */
+.login-box h2 {
+    font-size: 1.5rem;
+    color: #0095f6; /* Azul */
+    margin-bottom: 10px;
 }
 
-.login-box form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.login-box input {
-    padding: 10px;
+.login-box p {
     font-size: 1rem;
+    color: #262626; /* Preto */
+    margin-bottom: 20px;
+}
+
+/* Labels */
+.login-box label {
+    font-size: 1rem;
+    color: #262626; /* Preto */
+    margin-bottom: 5px;
+    display: block;
+    text-align: left;
+}
+
+/* Campos de entrada */
+.login-box input[type="email"],
+.login-box input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
     border: 1px solid #dbdbdb;
     border-radius: 4px;
-    outline: none;
-}
-
-.login-box button {
-    padding: 10px;
+    background: #fafafa; /* Fundo cinza claro */
     font-size: 1rem;
-    color: #fff;
-    background-color: #0095f6;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    color: #262626; /* Preto */
 }
 
-.login-box button:hover {
-    background-color: #007bb5;
-}
-
-.divider {
+/* Manter conectado */
+.keep-connected {
     display: flex;
     align-items: center;
-    margin: 20px 0;
-}
-
-.divider span {
-    flex: 1;
-    height: 1px;
-    background-color: #dbdbdb;
-    position: relative;
-}
-
-.divider span::before {
-    content: "OR";
-    position: absolute;
-    background-color: #fff;
-    padding: 0 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #8e8e8e;
+    margin-bottom: 15px;
     font-size: 0.9rem;
+    color: #262626; /* Preto */
 }
 
-.login-with-google {
-    background-color: #db4437;
-    color: #fff;
-    padding: 12px 20px;
-    border-radius: 8px;
+.keep-connected input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* Botão de login */
+.btn-login {
+    width: 100%;
+    padding: 10px;
+    background: #0095f6; /* Azul */
     border: none;
+    border-radius: 4px;
+    color: #fff; /* Branco */
     font-size: 1rem;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    transition: background 0.3s ease;
 }
 
-.login-with-google:hover {
-    background-color: #a3362a;
+.btn-login:hover {
+    background: #007bb5; /* Azul mais escuro ao passar o mouse */
 }
 
-.login-with-google:hover {
-    background-color: #eaeaea;
+/* Login com o Google */
+.google-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+    padding: 10px;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    background: #fff; /* Fundo branco */
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
 
-.signup-link {
+.google-login:hover {
+    background: #f4f4f4; /* Fundo cinza claro ao passar o mouse */
+}
+
+.google-login img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Link para cadastro */
+.register-link {
     margin-top: 20px;
     font-size: 0.9rem;
-    color: #8e8e8e;
+    color: #0095f6; /* Azul */
 }
 
-.signup-link a {
-    color: #0095f6;
+.register-link a {
     text-decoration: none;
+    color: #0095f6; /* Azul */
 }
 
-.signup-link a:hover {
+.register-link a:hover {
     text-decoration: underline;
+}
+
+/* Rodapé */
+.footer {
+    background-color: #262626; /* Preto */
+    color: #fff; /* Branco */
+    text-align: center;
+    padding: 10px 20px;
+    margin-top: 20px;
 }

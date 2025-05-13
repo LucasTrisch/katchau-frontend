@@ -1,98 +1,84 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
 
 body {
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #ff4b2b, #ff416c);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    color: #fff;
+    background-image: url('../imagens/fundo.png');
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
 }
 
-/* Container do formulário */
-.cadastro-container {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    padding: 40px 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(12px);
-    width: 100%;
+.container-cadastro {
     max-width: 400px;
-}
-
-/* Título */
-.register-box h1 {
-    font-size: 2.2rem;
-    margin-bottom: 8px;
-    color: #fff;
-}
-
-/* Subtítulo */
-.register-box .subtitle {
-    font-size: 1rem;
-    margin-bottom: 25px;
-    color: #ffeaea;
-}
-
-/* Formulário */
-.register-box form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-}
-
-/* Inputs */
-.register-box input {
-    padding: 14px 16px;
-    font-size: 1rem;
-    border: none;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #fff;
-    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.register-box input:focus {
-    background-color: rgba(255, 255, 255, 0.3);
-}
-
-.register-box input::placeholder {
-    color: #f0dcdc;
-}
-
-/* Botão */
-.register-box button {
-    padding: 14px;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #e63946;
-    border: none;
+#cadastro-form {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 20px;
     border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
-
-.register-box button:hover {
-    background-color: #ba2d3a;
-}
-
-/* Link para login */
-.login-link {
-    margin-top: 25px;
-    font-size: 0.9rem;
-    color: #fbeaea;
+.container-cadastro h2 {
     text-align: center;
+    margin-bottom: 25px;
+    font-size: 2em;
+    color: #c0392b;
+}
+
+#cadastro-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #555;
+}
+
+#cadastro-form input[type="text"],
+#cadastro-form input[type="email"],
+#cadastro-form input[type="password"] {
+    width: calc(100% - 22px);
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+#cadastro-form input[type="text"]:focus,
+#cadastro-form input[type="email"]:focus,
+#cadastro-form input[type="password"]:focus {
+    border-color: #c0392b;
+    outline: none;
+}
+
+#cadastro-form button[type="submit"] {
+    background-color: #c0392b;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+#cadastro-form button[type="submit"]:hover {
+    background-color: #a93226;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 20px;
 }
 
 .login-link a {
-    color: #fff;
+    color: #c0392b;
     text-decoration: none;
     font-weight: bold;
 }
@@ -100,3 +86,11 @@ body {
 .login-link a:hover {
     text-decoration: underline;
 }
+
+.footer-cadastro {
+    text-align: center;
+    margin-top: 30px;
+    color: #777;
+    font-size: 0.9em;
+}
+

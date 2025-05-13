@@ -1,124 +1,221 @@
+/* Estilos Globais */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    color: #fff;
-}
-body {
-    font-family: 'Roboto', sans-serif;
-}
-
-.login-container {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-}
-.login-box button {
-    padding: 12px;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #2575fc;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    
-}
-
-
-.login-box button:hover {
-    background-color: #1a5bb8;
-}
-
-.login-with-google {
-    padding: 12px;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #db4437;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.login-with-google:hover {
-    background-color: #a3362a;
-}
-
-
-.login-box input::placeholder {
-    color: #ccc;
-}
-header h1 {
-    margin: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
 }
 
 .container {
-    width: 80%;
+    width: 90%;
+    max-width: 1200px;
     margin: auto;
     overflow: hidden;
+    padding: 0 20px;
 }
 
-.product-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+/* Cabeçalho */
+header {
+    background: #c0392b; /* Vermelho */
+    color: #fff; /* Branco */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: #a93226 3px solid;
 }
 
-.product {
-    background: #ffffff;
-    border: 1px solid #dddddd;
-    border-radius: 5px;
-    margin: 15px;
-    padding: 15px;
-    flex: 1 1 calc(30% - 30px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+header .logo {
+    float: left;
+    margin: 0;
+    font-size: 28px;
+    font-weight: bold;
 }
 
-.product img {
-    max-width: 100%;
-    height: auto;
+header nav {
+    float: right;
+    margin-top: 10px;
 }
 
-.product h2 {
-    font-size: 1.5em;
-    margin: 10px 0;
+header nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
-.product p {
-    font-size: 1em;
-    color: #333;
+header nav ul li {
+    display: inline;
+    margin-left: 20px;
 }
 
-.product button {
-    background: #35424a;
-    color: #ffffff;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 5px;
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
 }
 
-.product button:hover {
-    background: #45a049;
+header nav ul li a:hover {
+    color: #f0f0f0; /* Branco mais claro no hover */
 }
 
-footer {
-    background: #35424a;
-    color: #ffffff;
+/* Seções */
+.section-container {
+    padding: 40px 0;
+}
+
+.section-container h2 {
     text-align: center;
-    padding: 10px 0;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+    margin-bottom: 30px;
+    font-size: 2em;
+    color: #c0392b; /* Vermelho */
 }
+
+/* Grid de Promoções e Produtos */
+.promocoes-grid, .produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.card-promocao, .card-produto {
+    background: #fff; /* Branco */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-promocao:hover, .card-produto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.card-promocao h3, .card-produto h3 {
+    margin-top: 0;
+    color: #c0392b; /* Vermelho */
+}
+
+.card-produto span {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #27ae60; /* Verde para preço */
+}
+
+/* Rodapé */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+/* Modal de Login */
+.modal {
+    display: none; /* Oculto por padrão */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5); /* Fundo escurecido */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 450px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+#login-form div {
+    margin-bottom: 15px;
+}
+
+#login-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#login-form input[type="text"],
+#login-form input[type="password"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#login-form button[type="submit"] {
+    background-color: #c0392b; /* Vermelho */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#login-form button[type="submit"]:hover {
+    background-color: #a93226; /* Vermelho mais escuro */
+}
+
+/* Responsividade */
+@media(max-width: 768px) {
+    header .logo {
+        float: none;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    header nav {
+        float: none;
+        text-align: center;
+    }
+
+    header nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .promocoes-grid, .produtos-grid {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    }
+
+    .modal-content {
+        width: 90%;
+        margin: 20% auto;
+    }
+}
+
