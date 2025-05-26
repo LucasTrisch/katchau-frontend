@@ -1,5 +1,6 @@
 /* Estilos Globais */
 body {
+    background-image: url('../imagens/fundo.png');
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
@@ -59,7 +60,6 @@ header nav ul li a:hover {
     color: #f0f0f0; /* Branco mais claro no hover */
 }
 
-/* Seções */
 .section-container {
     padding: 40px 0;
 }
@@ -68,10 +68,10 @@ header nav ul li a:hover {
     text-align: center;
     margin-bottom: 30px;
     font-size: 2em;
-    color: #c0392b; /* Vermelho */
+    color: #c0392b;
 }
 
-/* Grid de Promoções e Produtos */
+
 .promocoes-grid, .produtos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
