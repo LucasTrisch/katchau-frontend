@@ -1,6 +1,9 @@
 /* Estilos Globais */
 body {
     background-image: url('../imagens/fundo.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
@@ -92,9 +95,102 @@ header nav ul li a:hover {
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
-.card-promocao h3, .card-produto h3 {
-    margin-top: 0;
-    color: #c0392b; /* Vermelho */
+
+.promocao-dia {
+    background-image: url('../imagens/rx7800xt.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white; /* Ajuste a cor do texto para contraste */
+    padding: 10px; /* Espaçamento interno */
+    border-radius: 8px; /* Bordas arredondadas, se necessário */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Alinha o conteúdo ao final do card */
+    height: 180px;
+}
+.comfira-tam-bem {
+    background-image: url('../imagens/watercooler.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white; /* Ajuste a cor do texto para contraste */
+    padding: 10px; /* Espaçamento interno */
+    border-radius: 8px; /* Bordas arredondadas, se necessário */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Alinha o conteúdo ao final do card */
+    height: 400px;
+    
+}
+.promocoes-em-destaque {
+    background-image: url('../imagens/fontexpg.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: rgb(231, 50, 4); /* Ajuste a cor do texto para contraste */
+    padding: 10px; /* Espaçamento interno */
+    border-radius: 8px; /* Bordas arredondadas, se necessário */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Alinha o conteúdo ao final do card */
+    height: 400px;
+    
+}
+.processador-intel {
+    background-image: url('../imagens/intelcore7.jpg'); /* Substitua pelo caminho da sua imagem */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: rgb(204, 35, 6); /* Ajuste a cor do texto para contraste */
+    padding: 20px;
+    border-radius: 8px; /* Opcional: bordas arredondadas */
+    height: 350px; /* Ajuste a altura do card */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Alinha o conteúdo ao final do card */
+}
+.placa-mae{
+    background-image: url('../imagens/placamae.webp'); /* Substitua pelo caminho da sua imagem */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: rgb(204, 35, 6); /* Ajuste a cor do texto para contraste */
+    padding: 20px;
+    border-radius: 8px; /* Opcional: bordas arredondadas */
+    height: 350px; /* Ajuste a altura do card */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Alinha o conteúdo ao final do card */
+}
+.memoria-ram{
+    background-image: url('../imagens/memoriaram.jpg'); /* Substitua pelo caminho da sua imagem */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: rgb(204, 35, 6); /* Ajuste a cor do texto para contraste */
+    padding: 20px;
+    border-radius: 8px; /* Opcional: bordas arredondadas */
+    height: 350px; /* Ajuste a altura do card */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Alinha o conteúdo ao final do card */
+}
+.btn-produtos {
+    display: inline-block; /* Faz o link se comportar como um botão */
+    background-color: #c0392b;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none; /* Remove o sublinhado */
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-produtos:hover {
+    background-color: #a93226;
 }
 
 .card-produto span {
@@ -157,6 +253,13 @@ footer {
     color: #333;
     text-decoration: none;
 }
+.perfil-icon {
+    width: 30px; /* Ajuste a largura da imagem */
+    height: 30px; /* Ajuste a altura da imagem */
+    border-radius: 50%; /* Opcional: deixa a imagem circular */
+    margin-right: 8px; /* Espaçamento entre a imagem e o texto */
+    vertical-align: middle; /* Alinha a imagem ao centro do texto */
+}
 
 #login-form div {
     margin-bottom: 15px;
@@ -216,6 +319,27 @@ footer {
     .modal-content {
         width: 90%;
         margin: 20% auto;
+    }
+    nav ul {
+    display: flex;
+    align-items: center;
+}
+
+nav ul .perfil-menu {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espaço entre ícone e texto */
+}
+
+.perfil-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+    .perfil-menu span {
+        font-size: 16px;
+        color: #fff;
     }
 }
 

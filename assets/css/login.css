@@ -4,17 +4,17 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f4f4f4; /* Fundo cinza claro */
-    color: #262626; /* Texto preto */
-    line-height: 1.6;
+    background-image: url('../imagens/fundo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: #f4f4f4; /* cor de fundo caso a imagem não carregue */
 }
 
 /* Cabeçalho */
 .header {
-    background-color: #0095f6; /* Azul */
+    background-color: #c0392b; /* Azul */
     color: #fff; /* Branco */
     padding: 20px;
     text-align: center;
@@ -48,7 +48,7 @@ body {
 /* Título e subtítulo */
 .login-box h2 {
     font-size: 1.5rem;
-    color: #0095f6; /* Azul */
+    color: #c0392b; /* Azul */
     margin-bottom: 10px;
 }
 
@@ -97,7 +97,7 @@ body {
 .btn-login {
     width: 100%;
     padding: 10px;
-    background: #0095f6; /* Azul */
+    background: #c0392b; /* Azul */
     border: none;
     border-radius: 4px;
     color: #fff; /* Branco */
@@ -109,7 +109,7 @@ body {
 }
 
 .btn-login:hover {
-    background: #007bb5; /* Azul mais escuro ao passar o mouse */
+    background: #c0392b; /* Azul mais escuro ao passar o mouse */
 }
 
 /* Login com o Google */
@@ -140,12 +140,12 @@ body {
 .register-link {
     margin-top: 20px;
     font-size: 0.9rem;
-    color: #0095f6; /* Azul */
+    color: #f33101; /* Azul */
 }
 
 .register-link a {
     text-decoration: none;
-    color: #0095f6; /* Azul */
+    color: #c0392b; /* Azul */
 }
 
 .register-link a:hover {

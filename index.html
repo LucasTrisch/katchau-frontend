@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katchau Informática</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body>
@@ -12,7 +11,11 @@
             <h1 class="logo">Katchau Informática</h1>
             <nav>
                 <ul>
-                    <li><a href="#login" id="login-btn">Login</a></li>
+                    <li><a href="login.html" id="login-btn">Login</a></li>
+                    <li><a href="produto.html" id="produtos-btm">Produtos</a></li>
+                    <li><a href="cadastro.html" id="produtos-btm">Cadastro</a></li>
+                    <img src="assets/imagens/perfil-icon.jpg" alt="Ícone de Perfil" class="perfil-icon"> Perfil
+                </a></li>
                 </ul>
             </nav>
         </div>
@@ -22,43 +25,42 @@
         <section id="promocoes" class="section-container">
             <div class="container">
                 <h2>Promoções Imperdíveis!</h2>
-                <img><script src="../katchau-frontend/assets/imagens/rx7800xt.jpg"></script>
                 <div class="promocoes-grid">
                     <div class="card-promocao">
-                        <h3>Promoção Do dia!</h3>
+                        <h3 class="promocao-dia">Promoção Do dia!</h3>
                         <p>Placa de video AMD RX 7800 XT</p>
                     </div>
-                    <div class="card-promocao">
-                        <h3>Promoção 2</h3>
-                        <p>Descrição da promoção 2.</p>
-                    </div>
-                    <div class="card-promocao">
-                        <h3>Promoção 3</h3>
-                        <p>Descrição da promoção 3.</p>
-                    </div>
+                        <div class="comfira-tam-bem">
+                            <h3 class ="comfira-tambem">Promoção Do dia!</h3>
+                            <p>watercooler Aorus Display Lcd</p>
+                        </div>
+                        <div class="promocoes-em-destaque">
+                            <h3>Promoção Do dia!</h3>
+                            <p>Fonte XPG Full Modular</p>
+                        </div>
                 </div>
             </div>
         </section>
 
-        <section id="produtos" class="section-container">
+       <section id="produtos " class="section-container">
             <div class="container">
-                <h2>Nossos Produtos</h2>
+                <a href="#produtos" class="btn-produtos">Nossos Produtos</a>
+                
                 <div class="produtos-grid">
-                    <!-- Cards de produtos serão adicionados aqui -->
-                    <div class="card-produto">
-                        <h3>Produto A</h3>
-                        <p>Descrição do produto A.</p>
-                        <span>R$ XX,XX</span>
+                    <div class="processador-intel">
+                        <h3>Processador Intel core i7</h3>
+                        <p>Processador intel core 13700k,video integrado</p>
+                        <span>R$ 1500,00</span>
                     </div>
-                    <div class="card-produto">
-                        <h3>Produto B</h3>
-                        <p>Descrição do produto B.</p>
-                        <span>R$ YY,YY</span>
+                    <div class="placa-mae">
+                        <h3>Placa Mãe Aorus</h3>
+                        <p>Placa mãe aorus Z790 M,Ddr5,socket lga 1700</p>
+                        <span>R$ 2000,00</span>
                     </div>
-                    <div class="card-produto">
-                        <h3>Produto C</h3>
-                        <p>Descrição do produto C.</p>
-                        <span>R$ ZZ,ZZ</span>
+                    <div class="memoria-ram">
+                        <h3>Memoria ram xpg</h3>
+                        <p>Memoria Ram XPG,ddr5,5200Mhz,RGB</p>
+                        <span>R$ 1000,00</span>
                     </div>
                 </div>
             </div>
