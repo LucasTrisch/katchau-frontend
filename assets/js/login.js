@@ -75,7 +75,7 @@ form.addEventListener('submit', async (event) => {
 
         if (response.ok) {
             alert('Login realizado com sucesso!');
-            // Redirecionar ou atualizar UI conforme necessário
+            window.location.href = 'produto.html'; // Redireciona para a página de produtos
         } else {
             alert('E-mail ou senha inválidos.');
         }

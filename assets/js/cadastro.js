@@ -82,12 +82,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (response.ok) {
                     alert('Usuário cadastrado com sucesso!');
                     cadastroForm.reset();
+                    window.location.href = 'login.html'; // Redireciona para a página de login
                 } else {
                     alert('Erro ao cadastrar usuário.');
                 }
             } catch (error) {
                 alert('Erro de conexão ao cadastrar usuário.');
             }
+        });
+    }
+
+    // Botão para ir para produtos (opcional)
+    const produtosBtn = document.getElementById('produtos-btm');
+    if (produtosBtn) {
+        produtosBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'produto.html';
         });
     }
 

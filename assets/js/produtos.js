@@ -3,58 +3,58 @@ const produtos = [
     {
         id: 1,
         imagem: "../assets/imagens/mouse.jpg",
-        nome: "Mouse Gamer",
-        descricçao: "Mouse gamer Redragon com RGB e alta precisão.",	
+        nome: "Mouse gamer Redragon com RGB e alta precisão.",
         preco: 499.90,
         imagem: "assets/imagens/mouse.jpg"
     },
     {
         id: 2,
-        nome: "Teclado Mecânico",
-        preco: 299.90,
-        imagem: "assets/imagens/teclado.jpg"
+        nome: "Teclado Corsair Mecânico",
+        preco: 449.90,
+        imagem: "assets/imagens/tecladocorsair.png"
+
     },
     {
         id: 3,
-        nome: "Headset RGB",
-        preco: 399.90,
+        nome: "Headset Quantum One,JBL",
+        preco: 890.90,
         imagem: "assets/imagens/headset.jpg"
     },
     {
         id: 4,
-        nome: "Monitor 24'' Full HD",
-        preco: 899.90,
-        imagem: "assets/imagens/monitor.jpg"
+        nome: "Monitor 31.5'' Full HD,165Hz",
+        preco: 2899.90,
+        imagem: "assets/imagens/monitor.webp"
     },
     {
         id: 5,
-        nome: "Mousepad Gamer XL",
+        nome: "Mousepad RGB",
         preco: 99.90,
         imagem: "assets/imagens/mousepad.jpg"
     },
     {
         id: 6,
-        nome: "Webcam HD",
-        preco: 159.90,
-        imagem: "assets/imagens/webcam.jpg"
+        nome: "Webcam 4K",
+        preco: 500.00,
+        imagem: "assets/imagens/webcam.webp"
     },
     {
         id: 7,
         nome: "Cadeira Gamer",
         preco: 1299.90,
-        imagem: "assets/imagens/cadeira.jpg"
+        imagem: "assets/imagens/cadeira.webp"
     },
     {
         id: 8,
         nome: "Microfone USB",
-        preco: 249.90,
+        preco: 349.90,
         imagem: "assets/imagens/microfone.jpg"
     },
     {
         id: 9,
-        nome: "Placa de Vídeo RTX 3060",
-        preco: 2499.90,
-        imagem: "assets/imagens/placa-video.jpg"
+        nome: "Placa de Vídeo RTX 5090",
+        preco: 9000.00,
+        imagem: "assets/imagens/rtx5090.webp"
     }
 ];
 
@@ -75,6 +75,7 @@ function renderizarProdutos(lista) {
             <div class="produto-nome">${produto.nome}</div>
             <div class="produto-preco">R$ ${produto.preco.toFixed(2)}</div>
             <button class="btn-carrinho" data-id="${produto.id}">Adicionar ao Carrinho</button>
+            <button class="btn-detalhes" data-id="${produto.id}">Ver Detalhes</button>
         `;
         container.appendChild(card);
     });
@@ -82,7 +83,35 @@ function renderizarProdutos(lista) {
     // Evento para adicionar ao carrinho
     document.querySelectorAll('.btn-carrinho').forEach(btn => {
         btn.onclick = () => {
-            alert('Produto adicionado ao carrinho!');
+            const id = btn.getAttribute('data-id');
+            const produtoSelecionado = produtos.find(p => p.id == id);
+            if (produtoSelecionado) {
+                // Adiciona ao carrinho
+                if (window.adicionarAoCarrinho) {
+                    window.adicionarAoCarrinho(produtoSelecionado);
+                } else {
+                    // Fallback: implementa localmente se carrinho.js não estiver carregado
+                    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+                    const idx = carrinho.findIndex(item => item.id === produtoSelecionado.id);
+                    if (idx >= 0) {
+                        carrinho[idx].quantidade += 1;
+                    } else {
+                        carrinho.push({ ...produtoSelecionado, quantidade: 1 });
+                    }
+                    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+                }
+                alert('Produto adicionado ao carrinho!');
+            }
+        };
+    });
+
+    // Evento para botão de detalhes
+    document.querySelectorAll('.btn-detalhes').forEach(btn => {
+        btn.onclick = (e) => {
+            const id = btn.getAttribute('data-id');
+            const produtoSelecionado = produtos.find(p => p.id == id);
+            localStorage.setItem('produtoSelecionado', JSON.stringify(produtoSelecionado));
+            window.location.href = 'detalhe-produto.html'; // Página de detalhes
         };
     });
 }
