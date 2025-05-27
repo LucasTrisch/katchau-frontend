@@ -43,6 +43,54 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Envio do formulário de cadastro para UsuarioResource
+    const cadastroForm = document.getElementById('cadastro-form');
+    if (cadastroForm) {
+        cadastroForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Coleta os dados do formulário
+            const nome = document.getElementById('nomeCompleto').value;
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+            const confirmarSenha = document.getElementById('confirmarSenha').value;
+
+            if (senha !== confirmarSenha) {
+                alert('As senhas não coincidem.');
+                return;
+            }
+
+            // Monta o objeto UsuarioDTO
+            const usuario = {
+                nome: nome,
+                email: email,
+                senha: senha,
+                cpf: document.getElementById('cpf').value,
+                cep: document.getElementById('cep').value
+                // Adicione outros campos se necessário
+            };
+
+            try {
+                const response = await fetch('/api/usuarios', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(usuario)
+                });
+
+                if (response.ok) {
+                    alert('Usuário cadastrado com sucesso!');
+                    cadastroForm.reset();
+                } else {
+                    alert('Erro ao cadastrar usuário.');
+                }
+            } catch (error) {
+                alert('Erro de conexão ao cadastrar usuário.');
+            }
+        });
+    }
+
     // Exemplo de interatividade para cards (pode ser expandido)
     const cards = document.querySelectorAll('.card-promocao, .card-produto');
     cards.forEach(card => {

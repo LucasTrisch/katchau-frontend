@@ -49,27 +49,39 @@ function showError(message) {
 }
 
 // Evento de envio do formulário
-form.addEventListener('submit', (event) => {
+form.addEventListener('submit', async (event) => {
     event.preventDefault(); // Impede o envio padrão do formulário
 
-    const cpf = cpfInput.value.trim();
+    // Troque para pegar email e senha do formulário
+    const emailInput = document.querySelector('input[name="email"]');
+    const passwordInput = document.querySelector('input[name="password"]');
+    const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
 
-    // Validação do CPF
-    if (!validateCPF(cpf)) {
-        showError('CPF inválido. Por favor, insira um CPF válido.');
+    // Validação simples
+    if (!email || password.length < 6) {
+        alert('Preencha o e-mail e uma senha válida.');
         return;
     }
 
-    // Validação da senha
-    if (password.length < 6) {
-        showError('A senha deve ter pelo menos 6 caracteres.');
-        return;
-    }
+    try {
+        const response = await fetch('/api/usuarios/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: email, senha: password })
+        });
 
-    // Se tudo estiver válido, envie o formulário
-    alert('Login realizado com sucesso!');
-    form.submit(); // Envia o formulário
+        if (response.ok) {
+            alert('Login realizado com sucesso!');
+            // Redirecionar ou atualizar UI conforme necessário
+        } else {
+            alert('E-mail ou senha inválidos.');
+        }
+    } catch (error) {
+        alert('Erro ao conectar com o servidor.');
+    }
 });
 
 // Evento para o botão de login com o Google
