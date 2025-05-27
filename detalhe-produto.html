@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes do Produto - Katchau Store</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/produto.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        .detalhe-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(169,50,38,0.08);
+            padding: 32px;
+            display: flex;
+            gap: 40px;
+        }
+        .detalhe-img {
+            width: 320px;
+            height: 320px;
+            object-fit: contain;
+            border-radius: 12px;
+            border: 1.5px solid #a93226;
+            background: #fafafa;
+        }
+        .detalhe-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .detalhe-nome {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #a93226;
+        }
+        .detalhe-preco {
+            font-size: 1.5rem;
+            color: #a93226;
+            font-weight: bold;
+        }
+        .detalhe-desc {
+            font-size: 1.1rem;
+            color: #232323;
+        }
+        .btn-add-carrinho {
+            background: #a93226;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 14px 32px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 18px;
+            transition: background 0.2s;
+        }
+        .btn-add-carrinho:hover {
+            background: #c0392b;
+        }
+        .relacionados-container {
+            margin: 48px auto 0 auto;
+            max-width: 1000px;
+        }
+        .relacionados-titulo {
+            color: #a93226;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+        .relacionados-lista {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+        .relacionado-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(169,50,38,0.07);
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1.5px solid #a93226;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .relacionado-card:hover {
+            box-shadow: 0 6px 24px rgba(169,50,38,0.13);
+            transform: translateY(-4px) scale(1.03);
+        }
+        .relacionado-img {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+        .relacionado-nome {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #a93226;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+        .relacionado-preco {
+            font-size: 1.05rem;
+            color: #232323;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .relacionado-btn {
+            background: #a93226;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 18px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .relacionado-btn:hover {
+            background: #c0392b;
+        }
+        @media (max-width: 900px) {
+            .detalhe-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 18px;
+                padding: 18px;
+            }
+            .relacionados-container {
+                padding: 0 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header-produtos">
+        <div class="header-container">
+            <div class="header-logo">
+                <img src="assets/imagens/marquinhos.png" alt="Logo Katchau" class="logo-img">
+                <a href="index.html" class="logo-text logo-btn">Katchau Store</a>
+            </div>
+            <ul class="header-menu">
+                <li>
+                    <a href="carrinho.html" class="menu-link menu-carrinho">
+                        <img src="assets/imagens/carrinho.webp" alt="Carrinho" class="carrinho-icon">
+                        Carrinho
+                    </a>
+                </li>
+                <li>
+                    <a href="perfil.html" class="menu-link menu-perfil">
+                        <img src="assets/imagens/perfil-icon.jpg" alt="Ícone de Perfil" class="perfil-icon">
+                        <span>Perfil</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="login.html" class="menu-link">Login</a>
+                </li>
+                <li>
+                    <a href="cadastro.html" class="menu-link">Cadastro</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <div class="detalhe-container">
+            <img id="detalhe-img" class="detalhe-img" src="" alt="Imagem do Produto">
+            <div class="detalhe-info">
+                <div class="detalhe-nome" id="nome-produto"></div>
+                <div class="detalhe-preco" id="preco-produto"></div>
+                <div class="detalhe-desc" id="desc-produto"></div>
+                <button class="btn-add-carrinho" id="btn-add-carrinho">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+        <div class="relacionados-container">
+            <div class="relacionados-titulo">Produtos Relacionados</div>
+            <div class="relacionados-lista" id="relacionados-lista">
+                <!-- Produtos relacionados via JS -->
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2025 Katchau Informática. Todos os direitos reservados.</p>
+    </footer>
+    <script src="assets/js/detalhe-produto.js"></script>
+</body>
+</html>

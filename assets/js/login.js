@@ -74,8 +74,10 @@ form.addEventListener('submit', async (event) => {
         });
 
         if (response.ok) {
+            const usuario = await response.json();
+            localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
             alert('Login realizado com sucesso!');
-            window.location.href = 'produto.html'; // Redireciona para a página de produtos
+            window.location.href = 'produto.html';
         } else {
             alert('E-mail ou senha inválidos.');
         }

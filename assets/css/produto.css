@@ -245,6 +245,21 @@ body {
     text-align: center;
 }
 
+.produto-nome-btn {
+    background: none;
+    border: none;
+    color: var(--laranja);
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-bottom: 6px;
+    text-align: center;
+    display: block;
+    width: 100%;
+    padding: 0;
+}
+
 .produto-preco {
     font-size: 1.15rem;
     color: var(--preto);

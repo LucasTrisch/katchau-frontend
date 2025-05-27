@@ -1,62 +1,13 @@
-// Exemplo de produtos (adicione mais conforme necessário)
-const produtos = [
-    {
-        id: 1,
-        imagem: "../assets/imagens/mouse.jpg",
-        nome: "Mouse gamer Redragon com RGB e alta precisão.",
-        preco: 499.90,
-        imagem: "assets/imagens/mouse.jpg"
-    },
-    {
-        id: 2,
-        nome: "Teclado Corsair Mecânico",
-        preco: 449.90,
-        imagem: "assets/imagens/tecladocorsair.png"
-
-    },
-    {
-        id: 3,
-        nome: "Headset Quantum One,JBL",
-        preco: 890.90,
-        imagem: "assets/imagens/headset.jpg"
-    },
-    {
-        id: 4,
-        nome: "Monitor 31.5'' Full HD,165Hz",
-        preco: 2899.90,
-        imagem: "assets/imagens/monitor.webp"
-    },
-    {
-        id: 5,
-        nome: "Mousepad RGB",
-        preco: 99.90,
-        imagem: "assets/imagens/mousepad.jpg"
-    },
-    {
-        id: 6,
-        nome: "Webcam 4K",
-        preco: 500.00,
-        imagem: "assets/imagens/webcam.webp"
-    },
-    {
-        id: 7,
-        nome: "Cadeira Gamer",
-        preco: 1299.90,
-        imagem: "assets/imagens/cadeira.webp"
-    },
-    {
-        id: 8,
-        nome: "Microfone USB",
-        preco: 349.90,
-        imagem: "assets/imagens/microfone.jpg"
-    },
-    {
-        id: 9,
-        nome: "Placa de Vídeo RTX 5090",
-        preco: 9000.00,
-        imagem: "assets/imagens/rtx5090.webp"
+// Busca produtos do backend
+async function buscarProdutos() {
+    try {
+        const response = await fetch('/api/produtos');
+        const produtos = await response.json();
+        renderizarProdutos(produtos);
+    } catch (e) {
+        document.querySelector('.produtos-lista').innerHTML = '<p>Erro ao carregar produtos.</p>';
     }
-];
+}
 
 // Função para renderizar os produtos na tela
 function renderizarProdutos(lista) {
@@ -72,7 +23,7 @@ function renderizarProdutos(lista) {
         card.className = 'produto-card';
         card.innerHTML = `
             <img src="${produto.imagem}" alt="${produto.nome}" class="produto-img">
-            <div class="produto-nome">${produto.nome}</div>
+            <button class="produto-nome-btn" data-id="${produto.id}" style="background:none;border:none;color:#a93226;font-size:1.1rem;font-weight:700;cursor:pointer;text-decoration:underline;margin-bottom:6px;">${produto.nome}</button>
             <div class="produto-preco">R$ ${produto.preco.toFixed(2)}</div>
             <button class="btn-carrinho" data-id="${produto.id}">Adicionar ao Carrinho</button>
             <button class="btn-detalhes" data-id="${produto.id}">Ver Detalhes</button>
@@ -114,10 +65,20 @@ function renderizarProdutos(lista) {
             window.location.href = 'detalhe-produto.html'; // Página de detalhes
         };
     });
+
+    // Evento para nome do produto como botão (vai para detalhes)
+    document.querySelectorAll('.produto-nome-btn').forEach(btn => {
+        btn.onclick = (e) => {
+            const id = btn.getAttribute('data-id');
+            const produtoSelecionado = produtos.find(p => p.id == id);
+            localStorage.setItem('produtoSelecionado', JSON.stringify(produtoSelecionado));
+            window.location.href = 'detalhe-produto.html';
+        };
+    });
 }
 
 // Função de pesquisa
-function pesquisarProdutos(termo) {
+function pesquisarProdutos(termo, produtos) {
     const termoLower = termo.toLowerCase();
     return produtos.filter(produto =>
         produto.nome.toLowerCase().includes(termoLower)
@@ -125,7 +86,15 @@ function pesquisarProdutos(termo) {
 }
 
 // Evento de pesquisa
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    let produtos = [];
+    try {
+        const response = await fetch('/api/produtos');
+        produtos = await response.json();
+    } catch (e) {
+        document.querySelector('.produtos-lista').innerHTML = '<p>Erro ao carregar produtos.</p>';
+        return;
+    }
     renderizarProdutos(produtos);
 
     const formPesquisa = document.querySelector('.header-search');
@@ -133,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formPesquisa.addEventListener('submit', function(e) {
             e.preventDefault();
             const termo = formPesquisa.querySelector('.search-input').value;
-            const resultados = pesquisarProdutos(termo);
+            const resultados = pesquisarProdutos(termo, produtos);
             renderizarProdutos(resultados);
         });
     }

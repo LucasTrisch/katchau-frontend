@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil - Katchau Informática</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/produto.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        .perfil-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(169,50,38,0.08);
+            padding: 32px;
+        }
+        .perfil-header {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 32px;
+        }
+        .perfil-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #a93226;
+        }
+        .perfil-nome {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #a93226;
+        }
+        .perfil-info {
+            margin-bottom: 28px;
+        }
+        .perfil-info label {
+            font-weight: bold;
+            color: #a93226;
+        }
+        .perfil-config {
+            margin-top: 32px;
+            border-top: 1px solid #eee;
+            padding-top: 24px;
+        }
+        .perfil-config h3 {
+            color: #a93226;
+            margin-bottom: 14px;
+        }
+        .perfil-config button {
+            background: #a93226;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-right: 12px;
+            transition: background 0.2s;
+        }
+        .perfil-config button:hover {
+            background: #c0392b;
+        }
+        @media (max-width: 700px) {
+            .perfil-container {
+                padding: 12px;
+            }
+            .perfil-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header-produtos">
+        <div class="header-container">
+            <div class="header-logo">
+                <img src="assets/imagens/marquinhos.png" alt="Logo Katchau" class="logo-img">
+                <a href="index.html" class="logo-text logo-btn">Katchau Store</a>
+            </div>
+            <nav>
+                <ul class="header-menu">
+                    <li>
+                        <a href="carrinho.html" class="menu-link menu-carrinho">
+                            <img src="assets/imagens/carrinho.webp" alt="Carrinho" class="carrinho-icon">
+                            Carrinho
+                        </a>
+                    </li>
+                    <li>
+                        <a href="produto.html" class="menu-link">Produtos</a>
+                    </li>
+                    <li>
+                        <a href="login.html" class="menu-link">Login</a>
+                    </li>
+                    <li>
+                        <a href="perfil.html" class="menu-link menu-perfil">
+                            <img src="assets/imagens/perfil-icon.jpg" alt="Ícone de Perfil" class="perfil-icon">
+                            <span>Perfil</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="perfil-container">
+            <div class="perfil-header">
+                <img src="assets/imagens/perfil-icon.jpg" alt="Avatar" class="perfil-avatar" id="perfil-avatar">
+                <span class="perfil-nome" id="perfil-nome">Nome do Usuário</span>
+            </div>
+            <div class="perfil-info">
+                <p><label>E-mail:</label> <span id="perfil-email">usuario@email.com</span></p>
+                <p><label>CPF:</label> <span id="perfil-cpf">000.000.000-00</span></p>
+                <p><label>CEP:</label> <span id="perfil-cep">00000-000</span></p>
+            </div>
+            <div class="perfil-config">
+                <h3>Configurações</h3>
+                <button id="btn-editar">Editar Perfil</button>
+                <button id="btn-sair">Sair</button>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2025 Katchau Informática. Todos os direitos reservados.</p>
+    </footer>
+    <script>
+document.addEventListener('DOMContentLoaded', async () => {
+    let usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
+    if (usuario && usuario.id) {
+        try {
+            const response = await fetch(`/api/usuarios/${usuario.id}`);
+            usuario = await response.json();
+            localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+        } catch (e) {}
+    }
+    if (usuario) {
+        document.getElementById('perfil-nome').innerText = usuario.nome || 'Nome do Usuário';
+        document.getElementById('perfil-email').innerText = usuario.email || '';
+        document.getElementById('perfil-cpf').innerText = usuario.cpf || '';
+        document.getElementById('perfil-cep').innerText = usuario.cep || '';
+    }
+    document.getElementById('btn-sair').onclick = () => {
+        localStorage.removeItem('usuarioLogado');
+        window.location.href = 'login.html';
+    };
+    document.getElementById('btn-editar').onclick = () => {
+        alert('Funcionalidade de edição em breve!');
+    };
+});
+    </script>
+</body>
+</html>

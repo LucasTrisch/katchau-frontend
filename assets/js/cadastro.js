@@ -67,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 senha: senha,
                 cpf: document.getElementById('cpf').value,
                 cep: document.getElementById('cep').value
-                // Adicione outros campos se necessário
             };
 
             try {
@@ -80,9 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (response.ok) {
+                    const usuarioCriado = await response.json();
+                    localStorage.setItem('usuarioLogado', JSON.stringify(usuarioCriado));
                     alert('Usuário cadastrado com sucesso!');
                     cadastroForm.reset();
-                    window.location.href = 'login.html'; // Redireciona para a página de login
+                    window.location.href = 'perfil.html';
                 } else {
                     alert('Erro ao cadastrar usuário.');
                 }
