@@ -73,17 +73,14 @@ function setCarrinho(carrinho) {
     localStorage.setItem('carrinho', JSON.stringify(carrinho));
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
     const produtoSelecionado = JSON.parse(localStorage.getItem('produtoSelecionado'));
     if (!produtoSelecionado) return;
 
-    // Busca detalhes do produto pelo ID
-    let produto;
-    try {
-        const response = await fetch(`/api/produtos/${produtoSelecionado.id}`);
-        produto = await response.json();
-    } catch (e) {
-        document.getElementById('nome-produto').innerText = 'Erro ao carregar produto';
+    // Busca detalhes do produto pelo ID no array local
+    const produto = produtos.find(p => p.id === produtoSelecionado.id);
+    if (!produto) {
+        document.getElementById('nome-produto').innerText = 'Produto não encontrado';
         return;
     }
 
@@ -94,23 +91,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('desc-produto').innerText = produto.descricao || 'Sem descrição disponível.';
 
     document.getElementById('btn-add-carrinho').onclick = () => {
-        let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+        let carrinho = getCarrinho();
         const idx = carrinho.findIndex(item => item.id === produto.id);
         if (idx >= 0) {
             carrinho[idx].quantidade += 1;
         } else {
             carrinho.push({ ...produto, quantidade: 1 });
         }
-        localStorage.setItem('carrinho', JSON.stringify(carrinho));
+        setCarrinho(carrinho);
         alert('Produto adicionado ao carrinho!');
     };
 
-    // Produtos relacionados
-    let produtos = [];
-    try {
-        const response = await fetch('/api/produtos');
-        produtos = await response.json();
-    } catch (e) {}
+    // Produtos relacionados (outros produtos, exceto o atual)
     const relacionados = produtos.filter(p => p.id !== produto.id).slice(0, 4);
     const relacionadosLista = document.getElementById('relacionados-lista');
     relacionadosLista.innerHTML = '';
