@@ -1,13 +1,60 @@
-// Busca produtos do backend
-async function buscarProdutos() {
-    try {
-        const response = await fetch('/api/produtos');
-        const produtos = await response.json();
-        renderizarProdutos(produtos);
-    } catch (e) {
-        document.querySelector('.produtos-lista').innerHTML = '<p>Erro ao carregar produtos.</p>';
+// Exemplo de produtos (adicione mais conforme necessário)
+let produtos = [
+    {
+        id: 1,
+        imagem: "assets/imagens/mouse.jpg",
+        nome: "Mouse gamer Redragon com RGB e alta precisão.",
+        preco: 499.90
+    },
+    {
+        id: 2,
+        nome: "Teclado Corsair Mecânico",
+        preco: 449.90,
+        imagem: "assets/imagens/tecladocorsair.png"
+    },
+    {
+        id: 3,
+        nome: "Headset Quantum One,JBL",
+        preco: 890.90,
+        imagem: "assets/imagens/headset.jpg"
+    },
+    {
+        id: 4,
+        nome: "Monitor 31.5'' Full HD,165Hz",
+        preco: 2899.90,
+        imagem: "assets/imagens/monitor.webp"
+    },
+    {
+        id: 5,
+        nome: "Mousepad RGB",
+        preco: 99.90,
+        imagem: "assets/imagens/mousepad.jpg"
+    },
+    {
+        id: 6,
+        nome: "Webcam 4K",
+        preco: 500.00,
+        imagem: "assets/imagens/webcam.webp"
+    },
+    {
+        id: 7,
+        nome: "Cadeira Gamer",
+        preco: 1299.90,
+        imagem: "assets/imagens/cadeira.webp"
+    },
+    {
+        id: 8,
+        nome: "Microfone USB",
+        preco: 349.90,
+        imagem: "assets/imagens/microfone.jpg"
+    },
+    {
+        id: 9,
+        nome: "Placa de Vídeo RTX 5090",
+        preco: 9000.00,
+        imagem: "assets/imagens/rtx5090.webp"
     }
-}
+];
 
 // Função para renderizar os produtos na tela
 function renderizarProdutos(lista) {
@@ -77,24 +124,24 @@ function renderizarProdutos(lista) {
     });
 }
 
+// Função para cadastrar novo produto
+function cadastrarProduto(novoProduto) {
+    const novoId = produtos.length > 0 ? Math.max(...produtos.map(p => p.id)) + 1 : 1;
+    novoProduto.id = novoId;
+    produtos.push(novoProduto);
+    renderizarProdutos(produtos);
+}
+
 // Função de pesquisa
-function pesquisarProdutos(termo, produtos) {
+function pesquisarProdutos(termo) {
     const termoLower = termo.toLowerCase();
     return produtos.filter(produto =>
         produto.nome.toLowerCase().includes(termoLower)
     );
 }
 
-// Evento de pesquisa
-document.addEventListener('DOMContentLoaded', async () => {
-    let produtos = [];
-    try {
-        const response = await fetch('/api/produtos');
-        produtos = await response.json();
-    } catch (e) {
-        document.querySelector('.produtos-lista').innerHTML = '<p>Erro ao carregar produtos.</p>';
-        return;
-    }
+// Evento de pesquisa e inicialização
+document.addEventListener('DOMContentLoaded', () => {
     renderizarProdutos(produtos);
 
     const formPesquisa = document.querySelector('.header-search');
@@ -102,8 +149,25 @@ document.addEventListener('DOMContentLoaded', async () => {
         formPesquisa.addEventListener('submit', function(e) {
             e.preventDefault();
             const termo = formPesquisa.querySelector('.search-input').value;
-            const resultados = pesquisarProdutos(termo, produtos);
+            const resultados = pesquisarProdutos(termo);
             renderizarProdutos(resultados);
+        });
+    }
+
+    // Formulário de cadastro de produto (opcional)
+    const formCadastro = document.getElementById('form-cadastro-produto');
+    if (formCadastro) {
+        formCadastro.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nome = document.getElementById('cadastro-nome').value;
+            const preco = parseFloat(document.getElementById('cadastro-preco').value);
+            const imagem = document.getElementById('cadastro-imagem').value;
+            if (!nome || isNaN(preco) || !imagem) {
+                alert('Preencha todos os campos!');
+                return;
+            }
+            cadastrarProduto({ nome, preco, imagem });
+            formCadastro.reset();
         });
     }
 });
